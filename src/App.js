@@ -15,14 +15,14 @@ function App() {
     if(filters.length === 0) {
       return true;
     }
-    const details = [role, level];
+    const tags = [role, level];
     if(tools) {
-      details.push(...tools);
+      tags.push(...tools);
     }
     if(languages) {
-      details.push(...languages);
+      tags.push(...languages);
     }
-    return filters.every(filter => details.includes(filter));
+    return filters.every(filter => tags.includes(filter));
   }
 
   const handleAttrClick = (detail) => {

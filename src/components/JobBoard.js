@@ -3,7 +3,7 @@ import React from 'react';
 const JobBoard = ({job: {
   company,
   logo,
-  newStatus,
+  isNew,
   featured,
   position,
   role,
@@ -15,12 +15,12 @@ const JobBoard = ({job: {
   tools
 }, handleAttrClick}) => {
 
-  const details = [role, level];
+  const tags = [role, level];
   if(languages) {
-    details.push(...languages);
+    tags.push(...languages);
   }
   if(tools) {
-    details.push(...tools);
+    tags.push(...tools);
   }
 
   return (
@@ -36,7 +36,7 @@ const JobBoard = ({job: {
     <div className="flex flex-col justify-between ml-5 mr-10">
       <h3 className="font-bold text-teal-500">
         <span className="text-lg">{company}</span>
-        {newStatus && (
+        {isNew && (
           <span className="bg-teal-500 text-xs text-teal-100 uppercase rounded-full m-3 py-1 px-2">
             New!
           </span>
@@ -54,12 +54,12 @@ const JobBoard = ({job: {
     </div>
     <div className="flex flex-wrap items-center mt-4 mx-4 pt-4 border-t border-gray-500 lg:ml-auto lg:border-0 lg:p-0 lg:mb-0">
       {
-        details ?
-        (details.map((detail) =>
+        tags ?
+        (tags.map((tag) =>
           <span
-          onClick={() => handleAttrClick(detail)}
+          onClick={() => handleAttrClick(tag)}
           className="ltspan cursor-pointer text-teal-500 font-bold rounded mr-3 mb-4 p-2">
-          {detail}
+          {tag}
           </span>
         )): ''
       }
